@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 export default function Dashboard() {
   const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState("")
   const navigate = useNavigate();
   useEffect(()=>{
-     axios.get("http://localhost:3000/api/router/account/filter?filter="+filter,{
+     axios.get(`${backendUrl}/api/router/account/filter?filter=`+filter,{
       withCredentials: true
      })
      

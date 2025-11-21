@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import axios from 'axios';
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 export default function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -13,7 +13,7 @@ export default function SignIn() {
             
             password:password
         }
-         await axios.post("http://localhost:3000/api/router/user/signin",user,{
+         await axios.post(`${backendUrl}/api/router/user/signin`,user,{
             withCredentials : true
         })
         navigate("/dashboard");
